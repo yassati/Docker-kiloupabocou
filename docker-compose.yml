@@ -3,6 +3,8 @@ services:
   mysql:
     image: mysql:8.0
     restart: on-failure
+    volumes:
+      - "./var/:/var/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: ghom&çç!
       MYSQL_DATABASE: docker
@@ -14,6 +16,8 @@ services:
     env_file:
       - .env
     user: 1000:1000
+    volumes:
+      - "./apps/symfony_project:/use/src/app"
   nginx:
     image: nginx:1.15.3-alpine
     restart: on-failure
